@@ -140,7 +140,7 @@ Inherits HTTPSecureSocket
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
-		Function API_Call_PutFile(inFoldername as FolderItem, optional inLocale as String, optional inOverwrite as String, optional inParentRev as String, optional inAutorename as String) As Dictionary
+		Function API_Call_PutFile(inFoldername as FolderItem, optional inLocale as String, optional inOverwrite as String, optional inParentRev as String, optional inAutorename as String, optional inFolderToPutFile as String) As Dictionary
 		  // THIS METHOD PERFORMS THE DROPBOX API -  /files_put
 		  // PLEASE NOTE THE DROPBOX CORE API /files_put HAS A MAXIMUM OF 150MB
 		  
@@ -149,6 +149,7 @@ Inherits HTTPSecureSocket
 		  Dim overwrite as String = inOverwrite
 		  Dim parent_rev as String = inParentRev
 		  Dim autorename as String = inAutorename
+		  Dim folderToPutFile as String = inFolderToPutFile
 		  
 		  // PREPARE FILE
 		  Dim theFile as FolderItem = inFoldername
@@ -175,11 +176,17 @@ Inherits HTTPSecureSocket
 		  Self.SetRequestContent(theFileStr,"application/binary")
 		  Self.SetRequestHeader("Content-Length", CStr(FileContentLength))
 		  
-		  // SET DROPBOX SUB FOLDER SELECTION
-		  Dim subFolderName as String = "Arista Navigator/"
+		  // IF WE HAVE A PASSED A ROOT FOLDER TO PUT FILE THEN USE IT OTHERWISE DEFAULT TO AUTO
+		  Dim subFolderName as String
+		  Select Case folderToPutFile
+		  Case ""
+		    subFolderName = ""
+		  Else
+		    subFolderName = folderToPutFile
+		  End Select
 		  
 		  // SET POST VARIABLES
-		  Dim Dropbox_API_URL as String = "https://api-content.dropbox.com/1/files_put/auto/"+subFolderName+theFileName+"?param=val&locale=" + locale +_
+		  Dim Dropbox_API_URL as String = "https://api-content.dropbox.com/1/files_put/auto/"+subFolderName+"/"+theFileName+"?param=val&locale=" + locale +_
 		  "&overwrite=" + overwrite + "&parent_rev=" + parent_rev + "&autorename=" + autorename
 		  
 		  // PERFORM SYNCHRONOUS POST

@@ -135,11 +135,13 @@ Inherits HTTPSecureSocket
 			Name="Dropbox_Access_Code"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Dropbox_Access_Token"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Dropbox_API_URL"
@@ -157,6 +159,7 @@ Inherits HTTPSecureSocket
 			Name="Dropbox_Auth_UID"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"

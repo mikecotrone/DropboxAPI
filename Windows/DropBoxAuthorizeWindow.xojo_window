@@ -274,7 +274,6 @@ End
 		  g.TextFont = "system"
 		  g.TextSize = 18
 		  
-		  
 		  Dim ourAppName as String = Common_Module.Dropbox_AppName
 		  Dim theString as String = "Dropbox link with the " + ourAppName + " successful."
 		  Dim theStringWidth as Double = g.StringWidth(theString)

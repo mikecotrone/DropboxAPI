@@ -76,6 +76,10 @@ Protected Module Common_Module
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		Dropbox_AppName As String
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		Dropbox_Client_ID As String
 	#tag EndProperty
 
@@ -93,11 +97,18 @@ Protected Module Common_Module
 			Name="Dropbox_Client_ID"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Dropbox_Client_Secret"
+			Group="Behavior"
+			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Dropbox_Redirect_URI"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
