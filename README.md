@@ -1,7 +1,7 @@
 Dropbox Core API SDK
 =============================
 
-Language: Xojo 2014r2.1 and below
+Language: Xojo 2014r2.1 and below (Desktop)
 
 Author: Mike Cotrone (mikec@intelligentvisibility.com)
 
