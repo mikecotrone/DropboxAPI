@@ -85,7 +85,7 @@ Begin Window DemoWindow
          TabIndex        =   7
          TabPanelIndex   =   0
          TabStop         =   True
-         Text            =   "1l8g9qrlnuxynio"
+         Text            =   ""
          TextColor       =   &c00000000
          TextFont        =   "System"
          TextSize        =   12.0
@@ -162,7 +162,7 @@ Begin Window DemoWindow
          TabIndex        =   9
          TabPanelIndex   =   0
          TabStop         =   True
-         Text            =   "2yefbvv1zy0ay0n"
+         Text            =   ""
          TextColor       =   &c00000000
          TextFont        =   "System"
          TextSize        =   12.0
@@ -1208,6 +1208,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="LiveResize"
@@ -1287,6 +1288,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Placement"
@@ -1316,6 +1318,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"
