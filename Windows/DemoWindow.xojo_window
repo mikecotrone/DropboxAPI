@@ -85,7 +85,7 @@ Begin Window DemoWindow
          TabIndex        =   7
          TabPanelIndex   =   0
          TabStop         =   True
-         Text            =   ""
+         Text            =   "1l8g9qrlnuxynio"
          TextColor       =   &c00000000
          TextFont        =   "System"
          TextSize        =   12.0
@@ -162,7 +162,7 @@ Begin Window DemoWindow
          TabIndex        =   9
          TabPanelIndex   =   0
          TabStop         =   True
-         Text            =   ""
+         Text            =   "2yefbvv1zy0ay0n"
          TextColor       =   &c00000000
          TextFont        =   "System"
          TextSize        =   12.0
@@ -218,7 +218,7 @@ Begin Window DemoWindow
          CueText         =   ""
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   False
+         Enabled         =   True
          Format          =   ""
          Height          =   22
          HelpTag         =   "This URL must be registered in your Dropbox App Console otherwise it won't work."
@@ -347,7 +347,7 @@ Begin Window DemoWindow
          TabIndex        =   14
          TabPanelIndex   =   0
          TabStop         =   True
-         Text            =   ""
+         Text            =   "Arista® Navigator"
          TextColor       =   &c00000000
          TextFont        =   "System"
          TextSize        =   12.0
@@ -929,8 +929,8 @@ End
 		  // MAP CLIENT ID TO COMMON MODULE PROPERY
 		  Common_Module.Dropbox_Client_ID = Trim(DB_ClientID_TextField.Text)
 		  Common_Module.Dropbox_Client_Secret = Trim(DB_ClientSecret_TextField.Text)
-		  Common_Module.Dropbox_Redirect_URI = Trim(DB_RedirectURI_TextField.Text)
 		  Common_Module.Dropbox_AppName = Trim(DB_AppName_TextField.Text)
+		  Common_Module.Dropbox_Redirect_URI = Trim(DB_RedirectURI_TextField.Text)
 		  
 		  
 		  // BEGIN AUTHORIZATION PROCESS
