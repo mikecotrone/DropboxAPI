@@ -23,62 +23,15 @@ Begin Window DemoWindow
    MinWidth        =   64
    Placement       =   0
    Resizeable      =   True
-   Title           =   "Dropbox Core API Demo Window"
+   Title           =   "Dropbox Core API SDK - Demo Window"
    Visible         =   True
    Width           =   786
-   Begin TextArea TextArea1
-      AcceptTabs      =   False
-      Alignment       =   0
-      AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   False
-      BackColor       =   &cFFFFFF00
-      Bold            =   False
-      Border          =   True
-      DataField       =   ""
-      DataSource      =   ""
-      Enabled         =   True
-      Format          =   ""
-      Height          =   373
-      HelpTag         =   ""
-      HideSelection   =   True
-      Index           =   -2147483648
-      Italic          =   False
-      Left            =   363
-      LimitText       =   0
-      LineHeight      =   0.0
-      LineSpacing     =   1.0
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Mask            =   ""
-      Multiline       =   True
-      ReadOnly        =   True
-      Scope           =   0
-      ScrollbarHorizontal=   False
-      ScrollbarVertical=   True
-      Styled          =   False
-      TabIndex        =   1
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Text            =   ""
-      TextColor       =   &c00000000
-      TextFont        =   "Helvetica Neue"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   14
-      Underline       =   False
-      UseFocusRing    =   False
-      Visible         =   True
-      Width           =   411
-   End
    Begin GroupBox GroupBox1
       AutoDeactivate  =   True
       Bold            =   False
-      Caption         =   ""
+      Caption         =   "oAUTH 2.0 AUTHORIZATION"
       Enabled         =   True
-      Height          =   166
+      Height          =   217
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -93,44 +46,13 @@ Begin Window DemoWindow
       TabIndex        =   4
       TabPanelIndex   =   0
       TabStop         =   True
-      TextFont        =   "Helvetica Neue"
-      TextSize        =   0.0
+      TextFont        =   "System"
+      TextSize        =   12.0
       TextUnit        =   0
       Top             =   10
       Underline       =   False
       Visible         =   True
       Width           =   341
-      Begin PushButton oAuth_AuthorizeButton
-         AutoDeactivate  =   True
-         Bold            =   False
-         ButtonStyle     =   "0"
-         Cancel          =   False
-         Caption         =   "Authorize"
-         Default         =   False
-         Enabled         =   False
-         Height          =   20
-         HelpTag         =   ""
-         Index           =   -2147483648
-         InitialParent   =   "GroupBox1"
-         Italic          =   False
-         Left            =   61
-         LockBottom      =   False
-         LockedInPosition=   False
-         LockLeft        =   True
-         LockRight       =   False
-         LockTop         =   True
-         Scope           =   0
-         TabIndex        =   0
-         TabPanelIndex   =   0
-         TabStop         =   True
-         TextFont        =   "System"
-         TextSize        =   0.0
-         TextUnit        =   0
-         Top             =   136
-         Underline       =   False
-         Visible         =   True
-         Width           =   96
-      End
       Begin TextField DB_ClientID_TextField
          AcceptTabs      =   False
          Alignment       =   0
@@ -145,7 +67,7 @@ Begin Window DemoWindow
          Enabled         =   True
          Format          =   ""
          Height          =   22
-         HelpTag         =   ""
+         HelpTag         =   "Enter the Dropbox CLIENT_ID (App Key) that is given to you after you create a valid App in the Dropbox App Console."
          Index           =   -2147483648
          InitialParent   =   "GroupBox1"
          Italic          =   False
@@ -168,7 +90,7 @@ Begin Window DemoWindow
          TextFont        =   "System"
          TextSize        =   12.0
          TextUnit        =   0
-         Top             =   40
+         Top             =   59
          Underline       =   False
          UseFocusRing    =   False
          Visible         =   True
@@ -196,19 +118,19 @@ Begin Window DemoWindow
          Selectable      =   False
          TabIndex        =   8
          TabPanelIndex   =   0
-         Text            =   "Dropbox Client-ID"
+         Text            =   "Dropbox Client-ID (App key)"
          TextAlign       =   0
          TextColor       =   &c00000000
          TextFont        =   "System"
          TextSize        =   12.0
          TextUnit        =   0
-         Top             =   18
+         Top             =   37
          Transparent     =   False
          Underline       =   False
          Visible         =   True
-         Width           =   143
+         Width           =   190
       End
-      Begin TextField DB_RedirectURI_TextField
+      Begin TextField DB_ClientSecret_TextField
          AcceptTabs      =   False
          Alignment       =   0
          AutoDeactivate  =   True
@@ -222,7 +144,7 @@ Begin Window DemoWindow
          Enabled         =   True
          Format          =   ""
          Height          =   22
-         HelpTag         =   ""
+         HelpTag         =   "Enter the Dropbox CLIENT_SECRET (App Secret) that is given to you after you create a valid App in the Dropbox App Console."
          Index           =   -2147483648
          InitialParent   =   "GroupBox1"
          Italic          =   False
@@ -240,12 +162,89 @@ Begin Window DemoWindow
          TabIndex        =   9
          TabPanelIndex   =   0
          TabStop         =   True
+         Text            =   "2yefbvv1zy0ay0n"
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   12.0
+         TextUnit        =   0
+         Top             =   108
+         Underline       =   False
+         UseFocusRing    =   False
+         Visible         =   True
+         Width           =   239
+      End
+      Begin Label DB_ClientSecret_Label
+         AutoDeactivate  =   True
+         Bold            =   False
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox1"
+         Italic          =   False
+         Left            =   61
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Multiline       =   False
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   10
+         TabPanelIndex   =   0
+         Text            =   "Dropbox Client-Secret (App Secret)"
+         TextAlign       =   0
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   12.0
+         TextUnit        =   0
+         Top             =   86
+         Transparent     =   False
+         Underline       =   False
+         Visible         =   True
+         Width           =   230
+      End
+      Begin TextField DB_RedirectURI_TextField
+         AcceptTabs      =   False
+         Alignment       =   0
+         AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   False
+         BackColor       =   &cFFFFFF00
+         Bold            =   False
+         Border          =   True
+         CueText         =   ""
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Format          =   ""
+         Height          =   22
+         HelpTag         =   "This URL must be registered in your Dropbox App Console otherwise it won't work."
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox1"
+         Italic          =   False
+         Left            =   61
+         LimitText       =   0
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Mask            =   ""
+         Password        =   False
+         ReadOnly        =   False
+         Scope           =   0
+         TabIndex        =   11
+         TabPanelIndex   =   0
+         TabStop         =   True
          Text            =   "https://"
          TextColor       =   &c00000000
          TextFont        =   "System"
          TextSize        =   12.0
          TextUnit        =   0
-         Top             =   94
+         Top             =   158
          Underline       =   False
          UseFocusRing    =   False
          Visible         =   True
@@ -271,7 +270,7 @@ Begin Window DemoWindow
          Multiline       =   False
          Scope           =   0
          Selectable      =   False
-         TabIndex        =   10
+         TabIndex        =   12
          TabPanelIndex   =   0
          Text            =   "Dropbox Redirect URI"
          TextAlign       =   0
@@ -279,222 +278,378 @@ Begin Window DemoWindow
          TextFont        =   "System"
          TextSize        =   12.0
          TextUnit        =   0
-         Top             =   72
+         Top             =   136
          Transparent     =   False
          Underline       =   False
          Visible         =   True
          Width           =   130
       End
+      Begin PushButton oAuth_AuthorizeButton
+         AutoDeactivate  =   True
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
+         Caption         =   "Authorize"
+         Default         =   False
+         Enabled         =   False
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox1"
+         Italic          =   False
+         Left            =   61
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   13
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   192
+         Underline       =   False
+         Visible         =   True
+         Width           =   96
+      End
    End
-   Begin TextField DeltaFolderTextField
-      AcceptTabs      =   False
-      Alignment       =   0
+   Begin GroupBox GroupBox2
       AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   False
-      BackColor       =   &cFFFFFF00
       Bold            =   False
-      Border          =   True
-      CueText         =   " Enter foldername"
-      DataField       =   ""
-      DataSource      =   ""
+      Caption         =   "DROPBOX API CALLS"
       Enabled         =   True
-      Format          =   ""
-      Height          =   22
+      Height          =   149
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   152
-      LimitText       =   0
+      Left            =   10
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
-      Mask            =   ""
-      Password        =   False
-      ReadOnly        =   False
       Scope           =   0
-      TabIndex        =   5
+      TabIndex        =   11
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   ""
-      TextColor       =   &c00000000
       TextFont        =   "System"
       TextSize        =   12.0
       TextUnit        =   0
-      Top             =   364
+      Top             =   239
       Underline       =   False
-      UseFocusRing    =   True
       Visible         =   True
-      Width           =   118
+      Width           =   756
+      Begin PushButton APIGetAccountInfoButton
+         AutoDeactivate  =   True
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
+         Caption         =   "My Account Info"
+         Default         =   False
+         Enabled         =   False
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox2"
+         Italic          =   False
+         Left            =   19
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   0
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   267
+         Underline       =   False
+         Visible         =   True
+         Width           =   124
+      End
+      Begin PushButton APIPutFileButton
+         AutoDeactivate  =   True
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
+         Caption         =   "Put File"
+         Default         =   False
+         Enabled         =   False
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox2"
+         Italic          =   False
+         Left            =   19
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   1
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   307
+         Underline       =   False
+         Visible         =   True
+         Width           =   124
+      End
+      Begin PushButton APICreateFolderButton
+         AutoDeactivate  =   True
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
+         Caption         =   "Create Folder"
+         Default         =   False
+         Enabled         =   False
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox2"
+         Italic          =   False
+         Left            =   19
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   2
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   348
+         Underline       =   False
+         Visible         =   True
+         Width           =   124
+      End
+      Begin TextField FolderNameTextField
+         AcceptTabs      =   False
+         Alignment       =   0
+         AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   False
+         BackColor       =   &cFFFFFF00
+         Bold            =   False
+         Border          =   True
+         CueText         =   " New folder name"
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Format          =   ""
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox2"
+         Italic          =   False
+         Left            =   151
+         LimitText       =   0
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Mask            =   ""
+         Password        =   False
+         ReadOnly        =   False
+         Scope           =   0
+         TabIndex        =   3
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Text            =   ""
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   12.0
+         TextUnit        =   0
+         Top             =   347
+         Underline       =   False
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   118
+      End
+      Begin PushButton APIGetDeltaChangesButton
+         AutoDeactivate  =   True
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
+         Caption         =   "Delta Changes"
+         Default         =   False
+         Enabled         =   False
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox2"
+         Italic          =   False
+         Left            =   297
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   4
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   267
+         Underline       =   False
+         Visible         =   True
+         Width           =   124
+      End
+      Begin TextField DeltaFolderTextField
+         AcceptTabs      =   False
+         Alignment       =   0
+         AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   False
+         BackColor       =   &cFFFFFF00
+         Bold            =   False
+         Border          =   True
+         CueText         =   " Enter foldername"
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Format          =   ""
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox2"
+         Italic          =   False
+         Left            =   429
+         LimitText       =   0
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Mask            =   ""
+         Password        =   False
+         ReadOnly        =   False
+         Scope           =   0
+         TabIndex        =   5
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Text            =   ""
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   12.0
+         TextUnit        =   0
+         Top             =   267
+         Underline       =   False
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   118
+      End
+      Begin Separator Separator1
+         AutoDeactivate  =   True
+         Enabled         =   True
+         Height          =   133
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox2"
+         Left            =   266
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   6
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Top             =   254
+         Visible         =   True
+         Width           =   39
+      End
    End
-   Begin TextField FolderNameTextField
-      AcceptTabs      =   False
-      Alignment       =   0
+   Begin GroupBox GroupBox3
       AutoDeactivate  =   True
-      AutomaticallyCheckSpelling=   False
-      BackColor       =   &cFFFFFF00
       Bold            =   False
-      Border          =   True
-      CueText         =   " New folder name"
-      DataField       =   ""
-      DataSource      =   ""
+      Caption         =   "Demo Status Updates"
       Enabled         =   True
-      Format          =   ""
-      Height          =   22
+      Height          =   218
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   152
-      LimitText       =   0
+      Left            =   363
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
-      Mask            =   ""
-      Password        =   False
-      ReadOnly        =   False
       Scope           =   0
-      TabIndex        =   6
+      TabIndex        =   12
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   ""
-      TextColor       =   &c00000000
       TextFont        =   "System"
       TextSize        =   12.0
       TextUnit        =   0
-      Top             =   331
-      Underline       =   False
-      UseFocusRing    =   True
-      Visible         =   True
-      Width           =   118
-   End
-   Begin PushButton APIGetDeltaChangesButton
-      AutoDeactivate  =   True
-      Bold            =   False
-      ButtonStyle     =   "0"
-      Cancel          =   False
-      Caption         =   "Delta Changes"
-      Default         =   False
-      Enabled         =   False
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   20
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Scope           =   0
-      TabIndex        =   7
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   364
+      Top             =   10
       Underline       =   False
       Visible         =   True
-      Width           =   124
-   End
-   Begin PushButton APIPutFileButton
-      AutoDeactivate  =   True
-      Bold            =   False
-      ButtonStyle     =   "0"
-      Cancel          =   False
-      Caption         =   "Put File"
-      Default         =   False
-      Enabled         =   False
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   20
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Scope           =   0
-      TabIndex        =   8
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   300
-      Underline       =   False
-      Visible         =   True
-      Width           =   124
-   End
-   Begin PushButton APICreateFolderButton
-      AutoDeactivate  =   True
-      Bold            =   False
-      ButtonStyle     =   "0"
-      Cancel          =   False
-      Caption         =   "Create Folder"
-      Default         =   False
-      Enabled         =   False
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   20
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Scope           =   0
-      TabIndex        =   9
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   332
-      Underline       =   False
-      Visible         =   True
-      Width           =   124
-   End
-   Begin PushButton APIGetAccountInfoButton
-      AutoDeactivate  =   True
-      Bold            =   False
-      ButtonStyle     =   "0"
-      Cancel          =   False
-      Caption         =   "My Account Info"
-      Default         =   False
-      Enabled         =   False
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   20
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Scope           =   0
-      TabIndex        =   10
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   268
-      Underline       =   False
-      Visible         =   True
-      Width           =   124
+      Width           =   403
+      Begin TextArea TextArea1
+         AcceptTabs      =   False
+         Alignment       =   0
+         AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   False
+         BackColor       =   &c6B6B6B00
+         Bold            =   False
+         Border          =   True
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Format          =   ""
+         Height          =   191
+         HelpTag         =   ""
+         HideSelection   =   True
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox3"
+         Italic          =   False
+         Left            =   369
+         LimitText       =   0
+         LineHeight      =   0.0
+         LineSpacing     =   1.0
+         LockBottom      =   True
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   True
+         LockTop         =   True
+         Mask            =   ""
+         Multiline       =   True
+         ReadOnly        =   True
+         Scope           =   0
+         ScrollbarHorizontal=   False
+         ScrollbarVertical=   True
+         Styled          =   False
+         TabIndex        =   0
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Text            =   ""
+         TextColor       =   &cFAFFFA00
+         TextFont        =   "Helvetica Neue"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   30
+         Underline       =   False
+         UseFocusRing    =   False
+         Visible         =   True
+         Width           =   390
+      End
    End
 End
 #tag EndWindow
@@ -522,19 +677,24 @@ End
 
 #tag EndWindowCode
 
-#tag Events oAuth_AuthorizeButton
+#tag Events DB_ClientID_TextField
 	#tag Event
-		Sub Action()
-		  // MAP CLIENT ID TO COMMON MODULE PROPERY
-		  Common_Module.Dropbox_Client_ID = Trim(DB_ClientID_TextField.Text)
-		  Common_Module.Dropbox_Redirect_URI = Trim(DB_RedirectURI_TextField.Text)
-		  
-		  // BEGIN AUTHORIZATION PROCESS
-		  DropBoxAuthorizeWindow.Show()
+		Sub TextChange()
+		  if Me.Text =  "" AND DB_RedirectURI_TextField.Text = "" Then
+		    oAuth_AuthorizeButton.Enabled = False
+		    
+		  Elseif Me.Text <>  ""  AND DB_RedirectURI_TextField.Text = "" Then
+		    oAuth_AuthorizeButton.Enabled = False
+		    
+		  Elseif Me.Text <>  ""  AND DB_RedirectURI_TextField.Text <> "" Then
+		    // ALLOW AUTHORIZATION BUTTON TO BE ENABLED
+		    oAuth_AuthorizeButton.Enabled = True
+		    
+		  end if
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events DB_ClientID_TextField
+#tag Events DB_ClientSecret_TextField
 	#tag Event
 		Sub TextChange()
 		  if Me.Text =  "" AND DB_RedirectURI_TextField.Text = "" Then
@@ -558,7 +718,7 @@ End
 		    oAuth_AuthorizeButton.Enabled = False
 		    
 		  Elseif Me.Text <>  ""  AND DB_ClientID_TextField.Text = "" Then
-		     oAuth_AuthorizeButton.Enabled = False
+		    oAuth_AuthorizeButton.Enabled = False
 		    
 		  Elseif Me.Text <>  ""  AND DB_ClientID_TextField.Text <> "" Then
 		    // ALLOW AUTHORIZATION BUTTON TO BE ENABLED
@@ -568,35 +728,50 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events APIGetDeltaChangesButton
+#tag Events oAuth_AuthorizeButton
 	#tag Event
 		Sub Action()
-		  Dim DeltaChangesResults_Dictionary as Dictionary
+		  // MAP CLIENT ID TO COMMON MODULE PROPERY
+		  Common_Module.Dropbox_Client_ID = Trim(DB_ClientID_TextField.Text)
+		  Common_Module.Dropbox_Client_Secret = Trim(DB_ClientSecret_TextField.Text)
+		  Common_Module.Dropbox_Redirect_URI = Trim(DB_RedirectURI_TextField.Text)
 		  
+		  
+		  // BEGIN AUTHORIZATION PROCESS
+		  DropBoxAuthorizeWindow.Show()
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events APIGetAccountInfoButton
+	#tag Event
+		Sub Action()
 		  If Common_Module.DropboxAPICallSocket = NIL Then
 		    Common_Module.DropboxAPICallSocket = New Dropbox_API_Calls
 		  End If
 		  
+		  // MAKE API CALL USING DEFAULT LOCALE OF ENGLISH
+		  // DROPBOX OPTIONAL AVAILABLE PARAMETERS =  (locale)
+		  Dim DropboxAccountInfo as Dictionary = Common_Module.DropboxAPICallSocket.API_Call_AccountInfo("en")
 		  
-		  Dim DeltaFolderName as String = Trim(DeltaFolderTextField.Text)
-		  if DeltaFolderName <> "" Then
-		    // MAKE API CALL
-		    // DROPBOX OPTIONAL AVAILABLE PARAMETERS = (cursor, locale, path_prefix, include_media_info)
-		    DeltaChangesResults_Dictionary = Common_Module.DropboxAPICallSocket.API_Call_Delta("","en",DeltaFolderName, "False")
+		  Dim thisValue, thisTitle as String
+		  // PARSE RETURNED USER ACCOUNT DICTIONARY TO TEXTAREA FOR DEMO
+		  for i as integer = 0 to DropboxAccountInfo.Count-1
 		    
-		    // BLANK OUT THE TEXTFIELD ON DEMO WINDOW
-		    DeltaFolderTextField.Text = ""
+		    IF DropboxAccountInfo.Value(DropboxAccountInfo.Key(i)) ISA Dictionary Then
+		      thisTitle = DropboxAccountInfo.Key(i)
+		      thisValue = "<dictionary>"
+		    Else
+		      thisTitle = DropboxAccountInfo.Key(i)
+		      thisValue = DropboxAccountInfo.Value(DropboxAccountInfo.Key(i))
+		    END IF
 		    
-		  Else
-		    MsgBox "Please enter a folder name for Delta"
-		  end if
+		    // DEFINE UTF-8 ENCODING AND DISPLAY ON DemoWindow.TEXTAREA1
+		    Dim s as String = DefineEncoding(thisTitle + "  :  " + thisValue+EndOfLine, Encodings.UTF8)
+		    Self.TextArea1.AppendText s
+		    
+		  next i
 		  
 		  
-		  // REMINDER TO ENSURE YOU USE THE RESULTS IN THE DICTIONARY BELOW - REMEMBER YOU HAVE TO RECURSE IT FOR
-		  // ADDITIONAL SUB-DICTIONARIES
-		  
-		  // DeltaChangesResults_Dictionary
-		  MsgBox "Successfully Retrieved Delta for folder " + DeltaFolderName+EndOfLine+EndOfLine+"Please use the returned directory as that is not part of this demo"
 		  
 		End Sub
 	#tag EndEvent
@@ -649,36 +824,34 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events APIGetAccountInfoButton
+#tag Events APIGetDeltaChangesButton
 	#tag Event
 		Sub Action()
+		  Dim DeltaChangesResults_Dictionary as Dictionary
+		  
 		  If Common_Module.DropboxAPICallSocket = NIL Then
 		    Common_Module.DropboxAPICallSocket = New Dropbox_API_Calls
 		  End If
 		  
-		  // MAKE API CALL USING DEFAULT LOCALE OF ENGLISH
-		  // DROPBOX OPTIONAL AVAILABLE PARAMETERS =  (locale)
-		  Dim DropboxAccountInfo as Dictionary = Common_Module.DropboxAPICallSocket.API_Call_AccountInfo("en")
 		  
-		  Dim thisValue, thisTitle as String
-		  // PARSE RETURNED USER ACCOUNT DICTIONARY TO TEXTAREA FOR DEMO
-		  for i as integer = 0 to DropboxAccountInfo.Count-1
+		  Dim DeltaFolderName as String = Trim(DeltaFolderTextField.Text)
+		  if DeltaFolderName <> "" Then
+		    // MAKE API CALL
+		    // DROPBOX OPTIONAL AVAILABLE PARAMETERS = (cursor, locale, path_prefix, include_media_info)
+		    DeltaChangesResults_Dictionary = Common_Module.DropboxAPICallSocket.API_Call_Delta("","en",DeltaFolderName, "False")
 		    
-		    IF DropboxAccountInfo.Value(DropboxAccountInfo.Key(i)) ISA Dictionary Then
-		      thisTitle = DropboxAccountInfo.Key(i)
-		      thisValue = "<dictionary>"
-		    Else
-		      thisTitle = DropboxAccountInfo.Key(i)
-		      thisValue = DropboxAccountInfo.Value(DropboxAccountInfo.Key(i))
-		    END IF
+		    // BLANK OUT THE TEXTFIELD ON DEMO WINDOW
+		    DeltaFolderTextField.Text = ""
+		    MsgBox "Successfully Retrieved Delta for folder " + DeltaFolderName+EndOfLine+EndOfLine+"Please use the returned directory as that is not part of this demo"
 		    
-		    // DEFINE UTF-8 ENCODING AND DISPLAY ON DemoWindow.TEXTAREA1
-		    Dim s as String = DefineEncoding(thisTitle + "  :  " + thisValue+EndOfLine, Encodings.UTF8)
-		    Self.TextArea1.AppendText s
-		    
-		  next i
+		  Else
+		    MsgBox "Please enter a folder name for Delta"
+		  end if
 		  
 		  
+		  // REMINDER TO ENSURE YOU USE THE RESULTS IN THE DICTIONARY BELOW - REMEMBER YOU HAVE TO RECURSE IT FOR
+		  // ADDITIONAL SUB-DICTIONARIES
+		  // DeltaChangesResults_Dictionary
 		  
 		End Sub
 	#tag EndEvent

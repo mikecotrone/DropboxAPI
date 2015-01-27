@@ -32,8 +32,8 @@ Inherits HTTPSecureSocket
 		  
 		  // SEND ACCESS TO GET TOKEN INFO
 		  Dim theAccessCode as String = DropboxOAUTHSocket.Dropbox_Access_Code
-		  Dim theClientID as string = "1l8g9qrlnuxynio"
-		  Dim theClientSecret as String = "2yefbvv1zy0ay0n"
+		  Dim theClientID as string = Common_Module.Dropbox_Client_ID
+		  Dim theClientSecret as String = Common_Module.Dropbox_Client_Secret
 		  Dim theGrantType as String = "authorization_code"
 		  Self.API_Call_Results = Self.Post(Self.Dropbox_API_URL+"?grant_type=" + theGrantType + "&code="+_
 		  theAccessCode+"&client_id=" + theClientID + "&client_secret=" + theClientSecret + "&redirect_uri=https://www.google.com", 20)
@@ -102,6 +102,7 @@ Inherits HTTPSecureSocket
 			Name="API_Call_Results"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="CertificateFile"
@@ -131,12 +132,17 @@ Inherits HTTPSecureSocket
 			Type="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Dropbox_API_URL"
+			Name="Dropbox_Access_Code"
 			Group="Behavior"
 			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Dropbox_Auth_Token"
+			Name="Dropbox_Access_Token"
+			Group="Behavior"
+			Type="String"
+		#tag EndViewProperty
+		#tag ViewProperty
+			Name="Dropbox_API_URL"
 			Group="Behavior"
 			Type="String"
 			EditorType="MultiLineEditor"
@@ -148,10 +154,9 @@ Inherits HTTPSecureSocket
 			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
-			Name="Dropbox_Auth_TokenUID"
+			Name="Dropbox_Auth_UID"
 			Group="Behavior"
 			Type="String"
-			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"
