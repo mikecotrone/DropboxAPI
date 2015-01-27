@@ -30,6 +30,7 @@ What do I need from Dropbox to get this to work?
     2. You will need to create a Dropbox app using the App Console - https://www.dropbox.com/developers/apps
     
 Future version releases?
+
     This is an open source project and I will be adding to this implementation with more Core API calls as
     time permits.
   
