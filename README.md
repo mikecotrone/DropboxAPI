@@ -24,6 +24,7 @@ Supported Dropbox Core API Calls (as of v.1.0.1)
     /account/info - Retrieves information about the user's account
     /files_put - Uploads a file using PUT semantics
     /fileops/create_folder - Creates a folder
+    /fileops/delete - Deletes a folder
     /delta - A way of letting you keep up with changes to files and folders in a user's Dropbox
     
     
