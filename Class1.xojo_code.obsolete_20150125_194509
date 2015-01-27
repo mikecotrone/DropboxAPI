@@ -1,5 +1,0 @@
-#tag Class
-Protected Class Class1
-Inherits HTTPSecureSocket
-End Class
-#tag EndClass
