@@ -1,5 +1,5 @@
-Xojo Dropbox Core API SDK
-=========================
+Dropbox Core API SDK
+=============================
 
 Language: Xojo 2014r2.1 and below
 
