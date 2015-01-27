@@ -1,0 +1,9 @@
+#tag Module
+Protected Module Common_Module
+	#tag Property, Flags = &h0
+		DropboxAPISocket As DropboxAPI_Socket
+	#tag EndProperty
+
+
+End Module
+#tag EndModule
