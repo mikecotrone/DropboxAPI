@@ -7,7 +7,7 @@ Author: Mike Cotrone (mikec@intelligentvisibility.com)
 
 Version: 1.0.1
 
-Licensed: BSD-3-Clause - Use at your own risk
+Licensed: BSD-3-Clause - Please use at your own risk
 
 What is this Project?
 
