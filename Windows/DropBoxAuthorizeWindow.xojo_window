@@ -261,6 +261,9 @@ End
 		  // PARSE ACCESS CODE INFO FROM REDIRECT URL
 		  ParseCode(CancelLoadURL)
 		  
+		  me.ExecuteJavaScript "window.status = document.getElementsByTagName('html')[0].innerHTML;"
+		  
+		  
 		End Sub
 	#tag EndEvent
 	#tag Event
@@ -270,6 +273,11 @@ End
 		    agent = "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-us) AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16"
 		    me.UserAgent = agent
 		  end if
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub StatusChanged(newStatus as String)
+		  //MsgBox newStatus
 		End Sub
 	#tag EndEvent
 #tag EndEvents
