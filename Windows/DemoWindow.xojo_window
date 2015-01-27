@@ -218,7 +218,7 @@ Begin Window DemoWindow
          CueText         =   ""
          DataField       =   ""
          DataSource      =   ""
-         Enabled         =   True
+         Enabled         =   False
          Format          =   ""
          Height          =   22
          HelpTag         =   "This URL must be registered in your Dropbox App Console otherwise it won't work."
