@@ -38,6 +38,7 @@ What do I need from Dropbox to get this to work?
 
     1. You will need to setup a development account - https://www.dropbox.com/developers
     2. You will need to create a Dropbox app using the App Console - https://www.dropbox.com/developers/apps
+    3. READ the Dropbox Developer Branding Guide! - https://www.dropbox.com/developers/reference/branding
     
 Future version releases?
 
