@@ -33,5 +33,10 @@ Future version releases?
 
     This is an open source project and I will be adding to this implementation with more Core API calls as
     time permits.
+    
+I found a bug, what now?
+
+    Thank you and please report your findings at https://github.com/IntelligentVisibility/DropboxAPI/issues
+    
   
   
