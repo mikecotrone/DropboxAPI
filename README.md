@@ -18,6 +18,15 @@ What type of an implementation did you use?
 
     I used the Dropbox Core API RESTful implementation using oAuth 2.0
     
+Supported Dropbox Core API Calls (as of v.1.0.1)
+
+    /oauth2/authorize - OAuth 2.0 authorization flow
+    /account/info - Retrieves information about the user's account
+    /files_put - Uploads a file using PUT semantics
+    /fileops/create_folder - Creates a folder
+    /delta - A way of letting you keep up with changes to files and folders in a user's Dropbox
+    
+    
 How do I get started using it?
 
     This project is a self functioning demonstration that is designed to test your Dropbox developer App.
