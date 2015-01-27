@@ -76,6 +76,38 @@ Inherits HTTPSecureSocket
 	#tag EndMethod
 
 	#tag Method, Flags = &h0
+		Function API_Call_DeleteFolder(inFolderName as String, optional inLocale as String) As Dictionary
+		  // THIS METHOD PERFORMS THE DROPBOX API - /fileops/delete
+		  
+		  //  PREPARE PASSED PARAMETERS
+		  Dim locale as String = inLocale
+		  
+		  // PREPARE THE PASSED FOLDERNAME
+		  Dim theFolderName as String = EncodeURLComponent("/"+inFoldername)
+		  
+		  // SET POST URL - /root/path
+		  Dim Dropbox_API_URL as String = "https://api.dropbox.com/1/fileops/delete?root=auto&path=" + theFolderName + "&locale=" + locale
+		  
+		  // PERFORM SYNCHRONOUS POST
+		  Dim API_DeleteFolder_Results_JSONString as String = Self.Post(Dropbox_API_URL,30)
+		  
+		  //  PARSE JSON RECEIVED RESULTS TO A DICTIONARY
+		  Dim ItemToParse as New JSONItem
+		  Dim API_DeleteFolder_Results_Dictionary as Dictionary
+		  
+		  API_DeleteFolder_Results_Dictionary = New Dictionary
+		  ItemToParse.Load(API_DeleteFolder_Results_JSONString)
+		  API_DeleteFolder_Results_Dictionary = Common_Module.JSONToDictionary(ItemToParse)
+		  
+		  Return API_DeleteFolder_Results_Dictionary
+		  
+		  
+		  
+		  
+		End Function
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
 		Function API_Call_Delta(optional inCursor as String, optional inLocale as String, optional inPathPrefix as String, optional inIncludeMediaInfo as String) As Dictionary
 		  // THIS METHOD PERFORMS THE DROPBOX API -  /delta
 		  
@@ -204,12 +236,6 @@ Inherits HTTPSecureSocket
 
 	#tag ViewBehavior
 		#tag ViewProperty
-			Name="API_Call_Results"
-			Group="Behavior"
-			Type="String"
-			EditorType="MultiLineEditor"
-		#tag EndViewProperty
-		#tag ViewProperty
 			Name="CertificateFile"
 			Visible=true
 			Group="Behavior"
@@ -235,33 +261,6 @@ Inherits HTTPSecureSocket
 			Group="Behavior"
 			InitialValue="2"
 			Type="Integer"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Dropbox_Access_Code"
-			Group="Behavior"
-			Type="String"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Dropbox_Access_Token"
-			Group="Behavior"
-			Type="String"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Dropbox_API_URL"
-			Group="Behavior"
-			Type="String"
-			EditorType="MultiLineEditor"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Dropbox_Auth_TokenType"
-			Group="Behavior"
-			Type="String"
-			EditorType="MultiLineEditor"
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="Dropbox_Auth_UID"
-			Group="Behavior"
-			Type="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Index"

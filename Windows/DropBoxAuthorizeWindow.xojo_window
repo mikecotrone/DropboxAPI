@@ -46,71 +46,34 @@ Begin Window DropBoxAuthorizeWindow
       Top             =   0
       Visible         =   False
       Width           =   562
-      Begin Label DisclosureLabel
+      Begin Canvas CoverUpCanvas
+         AcceptFocus     =   False
+         AcceptTabs      =   False
          AutoDeactivate  =   True
-         Bold            =   False
-         DataField       =   ""
-         DataSource      =   ""
+         Backdrop        =   0
+         DoubleBuffer    =   False
          Enabled         =   True
-         Height          =   24
+         EraseBackground =   True
+         Height          =   323
          HelpTag         =   ""
          Index           =   -2147483648
          InitialParent   =   "HTMLViewer1"
-         Italic          =   False
-         Left            =   67
+         Left            =   0
          LockBottom      =   False
          LockedInPosition=   False
          LockLeft        =   True
          LockRight       =   False
          LockTop         =   True
-         Multiline       =   False
          Scope           =   0
-         Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   0
-         Text            =   "This authorization will occur only once for this session using oAuth2.0"
-         TextAlign       =   0
-         TextColor       =   &c00000000
-         TextFont        =   "System"
-         TextSize        =   15.0
-         TextUnit        =   0
-         Top             =   20
+         TabStop         =   True
+         Top             =   0
          Transparent     =   True
-         Underline       =   False
-         Visible         =   True
-         Width           =   483
+         UseFocusRing    =   True
+         Visible         =   False
+         Width           =   562
       End
-   End
-   Begin PushButton FinishedButton
-      AutoDeactivate  =   True
-      Bold            =   False
-      ButtonStyle     =   "0"
-      Cancel          =   False
-      Caption         =   "Finished!"
-      Default         =   True
-      Enabled         =   True
-      Height          =   20
-      HelpTag         =   ""
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   -143
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Scope           =   0
-      TabIndex        =   5
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextFont        =   "System"
-      TextSize        =   0.0
-      TextUnit        =   0
-      Top             =   -85
-      Underline       =   False
-      Visible         =   True
-      Width           =   80
    End
    Begin Separator Separator1
       AutoDeactivate  =   True
@@ -287,28 +250,45 @@ End
 	#tag Event
 		Sub TitleChanged(newTitle as String)
 		  if newTitle = "Google" AND siteCounter = 0 Then
-		    HTMLViewer1.ExecuteJavaScript("location.reload();")
+		    
+		    Me.ExecuteJavaScript("location.reload();")
 		    siteCounter = siteCounter + 1
+		    
+		    CoverUpCanvas.Visible = True
+		    
 		  end if
+		  
+		  
+		  
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events FinishedButton
+#tag Events CoverUpCanvas
 	#tag Event
-		Sub Action()
-		  // PARSE TOKEN FROM RETURN URL
-		  DropboxOAUTHSocket.API_Call_GetToken()
+		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		  g.ForeColor = &cFFFFFF
+		  g.FillRect(0,0,me.Width,me.Height)
 		  
-		  // ENABLE MAIN WINDOW BUTTONS FOR DEMO
-		  DemoWindow.UpdateDemoWindow()
+		  g.ForeColor = &c0280E4
 		  
-		  // CLOSE WINDOW
-		  Self.Close
-		End Sub
-	#tag EndEvent
-	#tag Event
-		Sub MouseEnter()
-		  HTMLViewer1.ExecuteJavaScript("location.reload();")
+		  g.TextFont = "system"
+		  g.TextSize = 18
+		  
+		  
+		  Dim ourAppName as String = Common_Module.Dropbox_AppName
+		  Dim theString as String = "Dropbox link with the " + ourAppName + " successful."
+		  Dim theStringWidth as Double = g.StringWidth(theString)
+		  Dim theStringHeight as Integer = g.StringHeight(theString, 500)
+		  Dim xPos as Integer = (me.Width/2)-(theStringWidth/2)
+		  Dim yPos as Integer =  (Me.Height/2)-(theStringHeight/2)
+		  g.DrawString(theString, xPos, yPos)
+		  
+		  Dim theString2 as String = "Please close this window to continue."
+		  Dim theStringWidth2 as Double = g.StringWidth(theString2)
+		  Dim theStringHeight2 as Integer = g.StringHeight(theString2, 500)
+		  Dim xPos2 as Integer = (me.Width/2)-(theStringWidth2/2)
+		  Dim yPos2 as Integer =  ((Me.Height/2)-(theStringHeight2/2)) + theStringHeight+6
+		  g.DrawString(theString2, xPos2, yPos2)
 		End Sub
 	#tag EndEvent
 #tag EndEvents
