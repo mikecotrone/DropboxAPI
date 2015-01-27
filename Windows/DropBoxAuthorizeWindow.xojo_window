@@ -9,16 +9,16 @@ Begin Window DropBoxAuthorizeWindow
    FullScreen      =   False
    FullScreenButton=   False
    HasBackColor    =   False
-   Height          =   355
+   Height          =   323
    ImplicitInstance=   True
    LiveResize      =   True
    MacProcID       =   0
-   MaxHeight       =   355
+   MaxHeight       =   323
    MaximizeButton  =   False
    MaxWidth        =   582
    MenuBar         =   706190868
    MenuBarVisible  =   True
-   MinHeight       =   355
+   MinHeight       =   323
    MinimizeButton  =   False
    MinWidth        =   562
    Placement       =   0
@@ -68,11 +68,11 @@ Begin Window DropBoxAuthorizeWindow
          Selectable      =   False
          TabIndex        =   0
          TabPanelIndex   =   0
-         Text            =   "Arista Navigator will only ask to authorize once using oAuth 2.0"
+         Text            =   "This authorization will occur only once for this session using oAuth2.0"
          TextAlign       =   0
          TextColor       =   &c00000000
          TextFont        =   "System"
-         TextSize        =   16.0
+         TextSize        =   15.0
          TextUnit        =   0
          Top             =   20
          Transparent     =   True
@@ -94,7 +94,7 @@ Begin Window DropBoxAuthorizeWindow
       Index           =   -2147483648
       InitialParent   =   ""
       Italic          =   False
-      Left            =   470
+      Left            =   -143
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -107,7 +107,7 @@ Begin Window DropBoxAuthorizeWindow
       TextFont        =   "System"
       TextSize        =   0.0
       TextUnit        =   0
-      Top             =   328
+      Top             =   -85
       Underline       =   False
       Visible         =   True
       Width           =   80
@@ -169,6 +169,17 @@ End
 #tag EndWindow
 
 #tag WindowCode
+	#tag Event
+		Sub Close()
+		  // PARSE TOKEN FROM RETURN URL
+		  DropboxOAUTHSocket.API_Call_GetToken()
+		  
+		  // ENABLE MAIN WINDOW BUTTONS FOR DEMO
+		  DemoWindow.UpdateDemoWindow()
+		  
+		End Sub
+	#tag EndEvent
+
 	#tag Event
 		Sub Open()
 		  // INSTANTIATE DROPBOX API CLASS
@@ -237,8 +248,6 @@ End
 		  HTMLViewer1.Enabled = True
 		  HTMLViewer1.Visible = True
 		  
-		  
-		  
 		End Sub
 	#tag EndMethod
 
@@ -251,18 +260,18 @@ End
 		Private Results As String
 	#tag EndProperty
 
+	#tag Property, Flags = &h21
+		Private siteCounter As Integer
+	#tag EndProperty
+
 
 #tag EndWindowCode
 
 #tag Events HTMLViewer1
 	#tag Event
 		Sub DocumentComplete(URL as String)
-		  CancelLoadURL = URL
-		  // PARSE ACCESS CODE INFO FROM REDIRECT URL
-		  ParseCode(CancelLoadURL)
-		  
-		  me.ExecuteJavaScript "window.status = document.getElementsByTagName('html')[0].innerHTML;"
-		  
+		  //// PARSE ACCESS CODE INFO FROM REDIRECT URL
+		  ParseCode(URL)
 		  
 		End Sub
 	#tag EndEvent
@@ -276,8 +285,11 @@ End
 		End Sub
 	#tag EndEvent
 	#tag Event
-		Sub StatusChanged(newStatus as String)
-		  //MsgBox newStatus
+		Sub TitleChanged(newTitle as String)
+		  if newTitle = "Google" AND siteCounter = 0 Then
+		    HTMLViewer1.ExecuteJavaScript("location.reload();")
+		    siteCounter = siteCounter + 1
+		  end if
 		End Sub
 	#tag EndEvent
 #tag EndEvents
