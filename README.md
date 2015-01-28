@@ -3,9 +3,8 @@ Dropbox Core API SDK
 
 Language: Xojo All versions (Desktop)
 
-Author: Mike Cotrone (mikec@intelligentvisibility.com)
-
-Version: 1.0.1
+Author: Mike Cotrone
+mikec@intelligentvisibility.com
 
 Licensed: BSD-3-Clause - Please use at your own risk
 
