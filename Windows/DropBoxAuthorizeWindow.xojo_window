@@ -73,6 +73,38 @@ Begin Window DropBoxAuthorizeWindow
          UseFocusRing    =   True
          Visible         =   False
          Width           =   562
+         Begin ChartOpenCircle ChartOpenCircle1
+            AcceptFocus     =   False
+            AcceptTabs      =   True
+            AnimationInterval=   20
+            AutoDeactivate  =   True
+            BackColor       =   &cFFFFFF00
+            Backdrop        =   0
+            ChartColor      =   &c00000000
+            Enabled         =   True
+            EraseBackground =   False
+            HasBackColor    =   False
+            Height          =   122
+            HelpTag         =   ""
+            InitialParent   =   "CoverUpCanvas"
+            Left            =   216
+            LockBottom      =   False
+            LockedInPosition=   False
+            LockLeft        =   True
+            LockRight       =   False
+            LockTop         =   True
+            PercentValue    =   0
+            Scope           =   0
+            TabIndex        =   0
+            TabPanelIndex   =   0
+            TabStop         =   True
+            TextColor       =   &c00000000
+            Top             =   100
+            Transparent     =   True
+            UseFocusRing    =   False
+            Visible         =   True
+            Width           =   130
+         End
       End
    End
    Begin Separator Separator1
@@ -95,38 +127,6 @@ Begin Window DropBoxAuthorizeWindow
       Top             =   322
       Visible         =   True
       Width           =   587
-   End
-   Begin ChartOpenCircle ChartOpenCircle1
-      AcceptFocus     =   False
-      AcceptTabs      =   True
-      AnimationInterval=   20
-      AutoDeactivate  =   True
-      BackColor       =   &cFFFFFF00
-      Backdrop        =   0
-      ChartColor      =   &c00000000
-      Enabled         =   True
-      EraseBackground =   False
-      HasBackColor    =   False
-      Height          =   122
-      HelpTag         =   ""
-      InitialParent   =   ""
-      Left            =   216
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      PercentValue    =   0
-      Scope           =   0
-      TabIndex        =   7
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextColor       =   &c00000000
-      Top             =   116
-      Transparent     =   True
-      UseFocusRing    =   False
-      Visible         =   True
-      Width           =   130
    End
 End
 #tag EndWindow
@@ -391,6 +391,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="LiveResize"
@@ -470,6 +471,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Placement"
@@ -499,6 +501,7 @@ End
 		Visible=true
 		Group="ID"
 		Type="String"
+		EditorType="String"
 	#tag EndViewProperty
 	#tag ViewProperty
 		Name="Title"
