@@ -18,7 +18,7 @@ What type of an implementation did you use?
 
     I used the Dropbox Core API RESTful implementation using oAuth 2.0
     
-Supported Dropbox Core API Calls (as of v.1.0.1)
+Supported Dropbox Core API Calls:
 
     /oauth2/authorize - OAuth 2.0 authorization flow
     /account/info - Retrieves information about the user's account
