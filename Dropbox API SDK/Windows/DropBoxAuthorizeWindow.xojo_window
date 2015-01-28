@@ -38,7 +38,7 @@ Begin Window DropBoxAuthorizeWindow
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
-      Renderer        =   1
+      Renderer        =   0
       Scope           =   0
       TabIndex        =   3
       TabPanelIndex   =   0
@@ -46,7 +46,7 @@ Begin Window DropBoxAuthorizeWindow
       Top             =   0
       Visible         =   False
       Width           =   562
-      Begin Canvas CoverUpCanvas
+      Begin Canvas AuthCompleteCanvas
          AcceptFocus     =   False
          AcceptTabs      =   False
          AutoDeactivate  =   True
@@ -186,8 +186,8 @@ End
 	#tag Method, Flags = &h21
 		Private Sub ParseCode(PageContent as String)
 		  Try
-		    ChartOpenCircle1.Visible = False
-		    ChartOpenCircle1.Enabled = False
+		    Self.ChartOpenCircle1.Visible = False
+		    Self.ChartOpenCircle1.Enabled = False
 		  Catch
 		  End Try
 		  // PARSE CODE
@@ -235,28 +235,31 @@ End
 	#tag Event
 		Sub DocumentComplete(URL as String)
 		  //// PARSE ACCESS CODE INFO FROM REDIRECT URL
-		  ParseCode(URL)
+		  if siteCounter >= 1 Then
+		    ParseCode(URL)
+		  end if
 		  
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub Open()
 		  if me.IsAvailable then
-		    dim agent as string
-		    agent = "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-us) AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16"
+		    dim agent as string = "Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_5_8; en-us) AppleWebKit/533.16 (KHTML, like Gecko) Version/5.0 Safari/533.16"
 		    me.UserAgent = agent
 		  end if
 		End Sub
 	#tag EndEvent
 	#tag Event
 		Sub TitleChanged(newTitle as String)
-		  if newTitle = "Google" AND siteCounter = 0 Then
-		    
+		  // WORK AROUND DUE TO HTMLVIEWER NOT ABLE TO RETURN THE CORRECT REDIRECTED URL
+		  // IT WILL HOWEVER RETURN THE CORRECT REDIRECTED URL BUT ONLY AFTER THE FOLLOWING JS PAGE RELOAD
+		  // THEN THE DOCUMENTCOMPLETE EVENT'S URL SEES THE CORRECT REDIRECT URL
+		  if siteCounter >= 1 Then
 		    Me.ExecuteJavaScript("location.reload();")
+		    AuthCompleteCanvas.Visible = True
+		    
+		  Else
 		    siteCounter = siteCounter + 1
-		    
-		    CoverUpCanvas.Visible = True
-		    
 		  end if
 		  
 		  
@@ -264,31 +267,54 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
-#tag Events CoverUpCanvas
+#tag Events AuthCompleteCanvas
 	#tag Event
 		Sub Paint(g As Graphics, areas() As REALbasic.Rect)
+		  #IF TargetMacOS Then
+		    Declare Sub CGContextSaveGState Lib "Cocoa" ( context As Integer )
+		    Declare Sub CGContextSetInterpolationQuality Lib "Cocoa" ( context As Integer, quality As Integer )
+		    Declare Sub CGContextRestoreGState Lib "Cocoa" ( context As Integer )
+		    Dim CGContextRef As Integer = g.handle( g.HandleTypeCGContextRef )
+		    CGContextSaveGState CGContextRef
+		    CGContextSetInterpolationQuality CGContextRef, 3
+		  #ENDIF
+		  
+		  
+		  // FILL WITH A WHITE BACKGROUND
 		  g.ForeColor = &cFFFFFF
 		  g.FillRect(0,0,me.Width,me.Height)
 		  
+		  // SET DRAWSTRING CHARACTERISTICS
 		  g.ForeColor = &c0280E4
-		  
 		  g.TextFont = "system"
 		  g.TextSize = 18
 		  
+		  // WRITE THE FIRST LINE CONFIRMING TO THE USER THAT WE HAVE BEEN SUCCESSFUL
 		  Dim ourAppName as String = Common_Module.Dropbox_AppName
 		  Dim theString as String = "Dropbox link with the " + ourAppName + " successful."
 		  Dim theStringWidth as Double = g.StringWidth(theString)
 		  Dim theStringHeight as Integer = g.StringHeight(theString, 500)
-		  Dim xPos as Integer = (me.Width/2)-(theStringWidth/2)
-		  Dim yPos as Integer =  (Me.Height/2)-(theStringHeight/2)
-		  g.DrawString(theString, xPos, yPos)
+		  Dim theString_xPos as Integer = (me.Width/2)-(theStringWidth/2)
+		  Dim theString_yPos as Integer =  (Me.Height/2)-(theStringHeight/2)
+		  g.DrawString(theString, theString_xPos, theString_yPos)
 		  
+		  // WRITE THE SECOND LINE CONFIRMING TO THE USER THAT WE HAVE BEEN SUCCESSFUL
 		  Dim theString2 as String = "Please close this window to continue."
 		  Dim theStringWidth2 as Double = g.StringWidth(theString2)
 		  Dim theStringHeight2 as Integer = g.StringHeight(theString2, 500)
-		  Dim xPos2 as Integer = (me.Width/2)-(theStringWidth2/2)
-		  Dim yPos2 as Integer =  ((Me.Height/2)-(theStringHeight2/2)) + theStringHeight+6
-		  g.DrawString(theString2, xPos2, yPos2)
+		  Dim theString2_xPos as Integer = (me.Width/2)-(theStringWidth2/2)
+		  Dim theString2_yPos as Integer =  ((Me.Height/2)-(theStringHeight2/2)) + theStringHeight+6
+		  g.DrawString(theString2, theString2_xPos, theString2_yPos)
+		  
+		  // DRAW YOUR APP LOGO - COMMENT IF YOU DON'T WANT TO USE
+		  Dim myLogo as Picture = AristaSquared72x72
+		  Dim myLogo_xPos as Integer = (me.Width/2)-(myLogo.Width/2)
+		  Dim myLogo_yPos as Integer = 25
+		  g.DrawPicture(myLogo,myLogo_xPos,myLogo_yPos, myLogo.Width,myLogo.Height)
+		  
+		  #IF TargetMacOS Then
+		    CGContextRestoreGState CGContextRef
+		  #ENDIF
 		End Sub
 	#tag EndEvent
 #tag EndEvents
