@@ -122,7 +122,7 @@ Begin Window DropBoxAuthorizeWindow
       TabPanelIndex   =   0
       TabStop         =   True
       TextColor       =   &c00000000
-      Top             =   116
+      Top             =   94
       Transparent     =   True
       UseFocusRing    =   False
       Visible         =   True
@@ -149,7 +149,8 @@ End
 		  DropboxOAUTHSocket = New Dropbox_oAuth_Socket
 		  
 		  // SET DASH CONTROL WHEEL VALUES
-		  ChartOpenCircle1.AnimationInterval = 25 // SPEED OF CONTROL IN MS - LOWER VALUE IS FASTER
+		  // SPEED OF CONTROL IN MS - LOWER VALUE IS FASTER
+		  ChartOpenCircle1.AnimationInterval = 20
 		  ChartOpenCircle1.PercentValue = 100.9
 		  ChartOpenCircle1.Animate
 		  
