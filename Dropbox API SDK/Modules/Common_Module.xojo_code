@@ -88,6 +88,10 @@ Protected Module Common_Module
 	#tag EndProperty
 
 	#tag Property, Flags = &h0
+		Dropbox_oAuth_SuccessBool As Boolean
+	#tag EndProperty
+
+	#tag Property, Flags = &h0
 		Dropbox_Redirect_URI As String
 	#tag EndProperty
 
@@ -97,6 +101,7 @@ Protected Module Common_Module
 			Name="Dropbox_AppName"
 			Group="Behavior"
 			Type="String"
+			EditorType="MultiLineEditor"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Dropbox_Client_ID"

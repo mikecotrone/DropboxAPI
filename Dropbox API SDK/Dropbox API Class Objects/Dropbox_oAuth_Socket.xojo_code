@@ -3,16 +3,9 @@ Protected Class Dropbox_oAuth_Socket
 Inherits HTTPSecureSocket
 	#tag Event
 		Sub Error(code as integer)
-		  // DROPBOX STANDARD ERRORS
-		  // 400    Bad input parameter. Error message should indicate which one and why.
-		  // 401    Bad or expired token. This can happen if the user or Dropbox revoked or expired an access token. To fix, you should re-authenticate the user.
-		  // 403    Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...). Unfortunately, re-authenticating the user won't help here.
-		  // 404    File or folder not found at the specified path.
-		  // 405    Request method not expected (generally should be GET or POST).
-		  // 429    Your app is making too many requests and is being rate limited. 429s can trigger on a per-app or per-user basis.
-		  // 503    If the response includes the Retry-After header, this means your OAuth 1.0 app is being rate limited. Otherwise, this indicates a transient server error, and your app should retry its request.
-		  // 507    User is over Dropbox storage quota.
-		  // 5xx    Server error. Check DropboxOps.
+		  RaiseEvent oAuth_Error(code)
+		  
+		  
 		End Sub
 	#tag EndEvent
 
@@ -35,15 +28,26 @@ Inherits HTTPSecureSocket
 		  Dim theClientID as string = Common_Module.Dropbox_Client_ID
 		  Dim theClientSecret as String = Common_Module.Dropbox_Client_Secret
 		  Dim theGrantType as String = "authorization_code"
-		  Self.API_Call_Results = Self.Post(Self.Dropbox_API_URL+"?grant_type=" + theGrantType + "&code="+_
+		  API_Call_Results = Self.Post(Self.Dropbox_API_URL+"?grant_type=" + theGrantType + "&code="+_
 		  theAccessCode+"&client_id=" + theClientID + "&client_secret=" + theClientSecret + "&redirect_uri=https://www.google.com", 20)
 		  
 		  // PARSE RECEIVED JSON TOKEN RESPONSE
-		  Dim ItemToParse as New JSONItem
-		  Self.DropboxTokenResultsDictionary = New Dictionary
-		  ItemToParse.Load(DropboxOAUTHSocket.API_Call_Results)
-		  Self.DropboxTokenResultsDictionary = Common_Module.JSONToDictionary(ItemToParse)
+		  IF API_Call_Results <> "" Then
+		    Dim ItemToParse as New JSONItem
+		    Self.DropboxTokenResultsDictionary = New Dictionary
+		    ItemToParse.Load(DropboxOAUTHSocket.API_Call_Results)
+		    Self.DropboxTokenResultsDictionary = Common_Module.JSONToDictionary(ItemToParse)
+		  END IF
 		  
+		  // VERIFY THAT WE PROPERLY RECEIVED THE TOKEN, TYPE, AND UID
+		  IF API_Call_Results <> "" Then
+		    Common_Module.Dropbox_oAuth_SuccessBool = True
+		  ELSEIF API_Call_Results = "" Then
+		    // SOMETHING WENT WRONG
+		    Common_Module.Dropbox_oAuth_SuccessBool = False
+		    // RAISE CUSTOM ERROR EVENT
+		    RaiseEvent oAuth_Error(910)
+		  END IF
 		  
 		  
 		  
@@ -66,6 +70,27 @@ Inherits HTTPSecureSocket
 		  
 		End Sub
 	#tag EndMethod
+
+
+	#tag Hook, Flags = &h0
+		Event oAuth_Error(errorCode as Integer)
+	#tag EndHook
+
+
+	#tag Note, Name = oAuth_Error Definitions
+		ERROR CODE          ERROR STRING 
+		----------------------------------------------------------------------------------------
+		400                          Bad input parameter. Error message should indicate which one and why.
+		401                          Bad or expired token. This can happen if the user or Dropbox revoked or expired an access token. To fix, you should re-authenticate the user.
+		403                          Bad OAuth request (wrong consumer key, bad nonce, expired timestamp...). Unfortunately, re-authenticating the user won't help here.
+		404                          File or folder not found at the specified path.
+		405                          Request method not expected (generally should be GET or POST).
+		429                          Your app is making too many requests and is being rate limited. 429s can trigger on a per-app or per-user basis.
+		503                          If the response includes the Retry-After header, this means your OAuth 1.0 app is being rate limited. Otherwise, this indicates a transient server error, and your app should retry its request.
+		507                          User is over Dropbox storage quota.
+		5xx                          Server error. Check DropboxOps.
+		910                          oAuth 2.0 response is missing token, token type, and UID
+	#tag EndNote
 
 
 	#tag Property, Flags = &h0
