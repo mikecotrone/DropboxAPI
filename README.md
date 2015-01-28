@@ -26,6 +26,7 @@ Supported Dropbox Core API Calls (as of v.1.0.1)
     /fileops/create_folder - Creates a folder
     /fileops/delete - Deletes a folder
     /delta - A way of letting you keep up with changes to files and folders in a user's Dropbox
+    /revisions - Only revisions up to thirty days old are available (or more if the Dropbox user has Packrat).
     
     
 How do I get started using it?
