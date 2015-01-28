@@ -134,7 +134,7 @@ End
 #tag WindowCode
 	#tag Event
 		Sub Close()
-		  // PARSE TOKEN FROM RETURN URL
+		  // SEND ACCESS CODE CALL TO RETRIEVE TOKEN INFO VIA HTTPS TLS SOCKET
 		  DropboxOAUTHSocket.API_Call_GetToken()
 		  
 		  // ENABLE MAIN WINDOW BUTTONS FOR DEMO
