@@ -10,8 +10,9 @@ Licensed: BSD-3-Clause - Please use at your own risk
 
 What is this Project?
 
-    This open source project came derived from need of having programatic integration with Dropbox. 
-    This project is a work in progress as I am not implemented every API call in the Dropbox Core API to start. 
+This open source project came derived from need of having programatic integration with Dropbox directly (not through sync services). This project is a work in progress as I am not implemented every API call in the Dropbox Core API to start. 
+
+This project's flow is based on poping an HTMLViewer to ask the user to allow authorization to link your app to their   account (oAuth2.0). Once this auth is complete you can make any Core APi calls that are implemented in this SDK programatically or by way of UI dialogs.
 
 What type of an implementation did you use?
 
