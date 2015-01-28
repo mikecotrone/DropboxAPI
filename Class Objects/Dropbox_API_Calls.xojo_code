@@ -207,6 +207,39 @@ Inherits HTTPSecureSocket
 		End Function
 	#tag EndMethod
 
+	#tag Method, Flags = &h0
+		Function API_Call_RevisionInfo(inFilePath as String, optional inLocale as String, optional inRevLimit as String) As Variant()
+		  // THIS METHOD PERFORMS THE DROPBOX API - /fileops/delete
+		  
+		  //  PREPARE PASSED PARAMETERS
+		  Dim path as String = inFilePath
+		  Dim locale as String = inLocale
+		  Dim rev_limit as String = inRevLimit
+		  
+		  // PREPARE THE PASSED FOLDERNAME
+		  Dim theFilePathName as String = EncodeURLComponent("/"+path)
+		  
+		  // SET POST URL - /root/path
+		  Dim Dropbox_API_URL as String = "https://api.dropbox.com/1/revisions/auto/"+theFilePathName + "?locale=" + locale + "&rev_limit=" + rev_limit
+		  
+		  // PERFORM SYNCHRONOUS POST
+		  Dim API_RevisonInfo_Results_JSONString as String = Self.Post(Dropbox_API_URL,30)
+		  
+		  //  PARSE JSON RECEIVED RESULTS TO A VARIANT ARRAY 
+		  Dim ItemToParse as New JSONItem
+		  Dim API_RevisionInfo_Results_Variant() as Variant
+		  
+		  ItemToParse.Load(API_RevisonInfo_Results_JSONString)
+		  API_RevisionInfo_Results_Variant() = Common_Module.JSONToArray(ItemToParse)
+		  
+		  Return API_RevisionInfo_Results_Variant()
+		  
+		  
+		  
+		  
+		End Function
+	#tag EndMethod
+
 	#tag Method, Flags = &h1000
 		Sub Constructor()
 		  // Calling the overridden superclass constructor.
@@ -274,6 +307,7 @@ Inherits HTTPSecureSocket
 			Visible=true
 			Group="ID"
 			Type="Integer"
+			EditorType="Integer"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Left"
@@ -286,6 +320,7 @@ Inherits HTTPSecureSocket
 			Visible=true
 			Group="ID"
 			Type="String"
+			EditorType="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Secure"
@@ -298,6 +333,7 @@ Inherits HTTPSecureSocket
 			Visible=true
 			Group="ID"
 			Type="String"
+			EditorType="String"
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="Top"

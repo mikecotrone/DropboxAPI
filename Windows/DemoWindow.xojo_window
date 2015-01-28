@@ -85,7 +85,7 @@ Begin Window DemoWindow
          TabIndex        =   7
          TabPanelIndex   =   0
          TabStop         =   True
-         Text            =   ""
+         Text            =   "1l8g9qrlnuxynio"
          TextColor       =   &c00000000
          TextFont        =   "System"
          TextSize        =   12.0
@@ -162,7 +162,7 @@ Begin Window DemoWindow
          TabIndex        =   9
          TabPanelIndex   =   0
          TabStop         =   True
-         Text            =   ""
+         Text            =   "2yefbvv1zy0ay0n"
          TextColor       =   &c00000000
          TextFont        =   "System"
          TextSize        =   12.0
@@ -768,13 +768,87 @@ Begin Window DemoWindow
          Visible         =   True
          Width           =   118
       End
+      Begin PushButton APIRevisionInfoButton
+         AutoDeactivate  =   True
+         Bold            =   False
+         ButtonStyle     =   "0"
+         Cancel          =   False
+         Caption         =   "Revision Info"
+         Default         =   False
+         Enabled         =   False
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox2"
+         Italic          =   False
+         Left            =   295
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   12
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "System"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   386
+         Underline       =   False
+         Visible         =   True
+         Width           =   124
+      End
+      Begin TextField RevisionPath_TextField
+         AcceptTabs      =   False
+         Alignment       =   0
+         AutoDeactivate  =   True
+         AutomaticallyCheckSpelling=   False
+         BackColor       =   &cFFFFFF00
+         Bold            =   False
+         Border          =   True
+         CueText         =   " Path to file"
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Format          =   ""
+         Height          =   22
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox2"
+         Italic          =   False
+         Left            =   431
+         LimitText       =   0
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Mask            =   ""
+         Password        =   False
+         ReadOnly        =   False
+         Scope           =   0
+         TabIndex        =   13
+         TabPanelIndex   =   0
+         TabStop         =   True
+         Text            =   ""
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   12.0
+         TextUnit        =   0
+         Top             =   386
+         Underline       =   False
+         UseFocusRing    =   True
+         Visible         =   True
+         Width           =   139
+      End
    End
    Begin GroupBox GroupBox3
       AutoDeactivate  =   True
       Bold            =   False
       Caption         =   "Demo Status Updates"
       Enabled         =   True
-      Height          =   218
+      Height          =   257
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -808,7 +882,7 @@ Begin Window DemoWindow
          DataSource      =   ""
          Enabled         =   True
          Format          =   ""
-         Height          =   191
+         Height          =   230
          HelpTag         =   ""
          HideSelection   =   True
          Index           =   -2147483648
@@ -861,6 +935,7 @@ End
 		  Self.APICreateFolderButton.Enabled = True
 		  Self.APIGetDeltaChangesButton.Enabled = True
 		  Self.APIDeleteFolderButton.Enabled = True
+		  Self.APIRevisionInfoButton.Enabled = True
 		  
 		  // UPDATE DEMO WINDOW TEXTFIELD BEHAVIOUR
 		  Self.DB_RedirectURI_TextField.Enabled = False
@@ -980,7 +1055,7 @@ End
 		    END IF
 		    
 		    // DEFINE UTF-8 ENCODING AND DISPLAY ON DemoWindow.TEXTAREA1
-		    Dim s as String = DefineEncoding(thisTitle + "  :  " + thisValue+EndOfLine, Encodings.UTF8)
+		    Dim s as String = DefineEncoding(thisTitle + ":  " + thisValue+EndOfLine, Encodings.UTF8)
 		    Self.TextArea1.AppendText s
 		    
 		  next i
@@ -1050,7 +1125,7 @@ End
 		      END IF
 		      
 		      // DEFINE UTF-8 ENCODING AND DISPLAY ON DemoWindow.TEXTAREA1
-		      Dim s as String = DefineEncoding(thisTitle + "  :  " + thisValue+EndOfLine, Encodings.UTF8)
+		      Dim s as String = DefineEncoding(thisTitle + ":  " + thisValue+EndOfLine, Encodings.UTF8)
 		      Self.TextArea1.AppendText s
 		    next i
 		    
@@ -1108,6 +1183,61 @@ End
 		    FolderToDelete_TextField.Text = ""
 		  Else
 		    MsgBox "Please enter a folder name to delete"
+		  end if
+		  
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
+#tag Events APIRevisionInfoButton
+	#tag Event
+		Sub Action()
+		  Dim RevisionPathToFileResults_Variant() as Variant
+		  
+		  If Common_Module.DropboxAPICallSocket = NIL Then
+		    Common_Module.DropboxAPICallSocket = New Dropbox_API_Calls
+		  End If
+		  
+		  Dim UserRevisionPathToFile as String = Trim(RevisionPath_TextField.Text)
+		  if UserRevisionPathToFile <> "" Then
+		    // MAKE API CALL
+		    // DROPBOX OPTIONAL AVAILABLE PARAMETERS =  (locale, rev_limit)
+		    Dim rev_limit as String = "10" //default
+		    RevisionPathToFileResults_Variant() = Common_Module.DropboxAPICallSocket.API_Call_RevisionInfo(UserRevisionPathToFile, "en", rev_limit)
+		    
+		    // PARSE RETURNED REVISION CHANGES VARIANT ARRAY
+		    Self.TextArea1.AppendText "Number of Revisions Retreived: " + rev_limit + EndOfLine + EndOfLine
+		    Dim thisValue, thisTitle as String
+		    for i as integer = 0 to RevisionPathToFileResults_Variant.Ubound
+		      
+		      // LOAD RECURSIVE DICTIONARY
+		      Dim thisEmbeddedDictionary as New Dictionary
+		      thisEmbeddedDictionary = RevisionPathToFileResults_Variant(i)
+		      for p as Integer = 0 to thisEmbeddedDictionary.Count-1
+		        IF thisEmbeddedDictionary.Value(thisEmbeddedDictionary.Key(p)) ISA Dictionary Then
+		          thisTitle = thisEmbeddedDictionary.Key(p)
+		          thisValue = "<dictionary to recurse later>"
+		          
+		        Elseif thisEmbeddedDictionary.Value(thisEmbeddedDictionary.Key(p)).IsArray = True Then
+		          thisTitle = thisEmbeddedDictionary.Key(p)
+		          thisValue = "<array to recurse later>"
+		        Else
+		          thisTitle = thisEmbeddedDictionary.Key(p)
+		          thisValue = thisEmbeddedDictionary.Value(thisEmbeddedDictionary.Key(p))
+		        END IF
+		        
+		        // DEFINE UTF-8 ENCODING AND DISPLAY ON DemoWindow.TEXTAREA1
+		        Dim s as String = DefineEncoding(thisTitle + ":  " + thisValue+EndOfLine, Encodings.UTF8)
+		        Self.TextArea1.AppendText s
+		        
+		      next p
+		      Self.TextArea1.AppendText EndOfLine
+		    next i
+		    
+		    // BLANK OUT THE TEXTFIELD ON DEMO WINDOW
+		    RevisionPath_TextField.Text = ""
+		  Else
+		    MsgBox "Please enter the file path for revision information."
 		  end if
 		  
 		  
