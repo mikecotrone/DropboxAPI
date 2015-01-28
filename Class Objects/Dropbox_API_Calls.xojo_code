@@ -209,7 +209,7 @@ Inherits HTTPSecureSocket
 
 	#tag Method, Flags = &h0
 		Function API_Call_RevisionInfo(inFilePath as String, optional inLocale as String, optional inRevLimit as String) As Variant()
-		  // THIS METHOD PERFORMS THE DROPBOX API - /fileops/delete
+		  // THIS METHOD PERFORMS THE DROPBOX API - /revisions
 		  
 		  //  PREPARE PASSED PARAMETERS
 		  Dim path as String = inFilePath
@@ -219,7 +219,7 @@ Inherits HTTPSecureSocket
 		  // PREPARE THE PASSED FOLDERNAME
 		  Dim theFilePathName as String = EncodeURLComponent("/"+path)
 		  
-		  // SET POST URL - /root/path
+		  // SET POST URL
 		  Dim Dropbox_API_URL as String = "https://api.dropbox.com/1/revisions/auto/"+theFilePathName + "?locale=" + locale + "&rev_limit=" + rev_limit
 		  
 		  // PERFORM SYNCHRONOUS POST

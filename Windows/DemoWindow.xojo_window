@@ -1202,7 +1202,7 @@ End
 		  if UserRevisionPathToFile <> "" Then
 		    // MAKE API CALL
 		    // DROPBOX OPTIONAL AVAILABLE PARAMETERS =  (locale, rev_limit)
-		    Dim rev_limit as String = "10" //default
+		    Dim rev_limit as String = "10"
 		    RevisionPathToFileResults_Variant() = Common_Module.DropboxAPICallSocket.API_Call_RevisionInfo(UserRevisionPathToFile, "en", rev_limit)
 		    
 		    // PARSE RETURNED REVISION CHANGES VARIANT ARRAY
@@ -1210,7 +1210,7 @@ End
 		    Dim thisValue, thisTitle as String
 		    for i as integer = 0 to RevisionPathToFileResults_Variant.Ubound
 		      
-		      // LOAD RECURSIVE DICTIONARY
+		      // LOAD RECURSIVE DICTIONARY  
 		      Dim thisEmbeddedDictionary as New Dictionary
 		      thisEmbeddedDictionary = RevisionPathToFileResults_Variant(i)
 		      for p as Integer = 0 to thisEmbeddedDictionary.Count-1
