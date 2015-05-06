@@ -96,38 +96,6 @@ Begin Window DropBoxAuthorizeWindow
       Visible         =   True
       Width           =   587
    End
-   Begin ChartOpenCircle ChartOpenCircle1
-      AcceptFocus     =   False
-      AcceptTabs      =   True
-      AnimationInterval=   20
-      AutoDeactivate  =   True
-      BackColor       =   &cFFFFFF00
-      Backdrop        =   0
-      ChartColor      =   &c00000000
-      Enabled         =   True
-      EraseBackground =   False
-      HasBackColor    =   False
-      Height          =   122
-      HelpTag         =   ""
-      InitialParent   =   ""
-      Left            =   216
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      PercentValue    =   0
-      Scope           =   0
-      TabIndex        =   7
-      TabPanelIndex   =   0
-      TabStop         =   True
-      TextColor       =   &c00000000
-      Top             =   94
-      Transparent     =   True
-      UseFocusRing    =   False
-      Visible         =   True
-      Width           =   130
-   End
 End
 #tag EndWindow
 
@@ -147,12 +115,6 @@ End
 		Sub Open()
 		  // INSTANTIATE DROPBOX API CLASS
 		  DropboxOAUTHSocket = New Dropbox_oAuth_Socket
-		  
-		  // SET DASH CONTROL WHEEL VALUES
-		  // SPEED OF CONTROL IN MS - LOWER VALUE IS FASTER
-		  ChartOpenCircle1.AnimationInterval = 20
-		  ChartOpenCircle1.PercentValue = 100.9
-		  ChartOpenCircle1.Animate
 		  
 		  HTMLViewer1.Visible = False
 		  HTMLViewer1.Enabled = False
@@ -185,11 +147,6 @@ End
 
 	#tag Method, Flags = &h21
 		Private Sub ParseCode(PageContent as String)
-		  Try
-		    Self.ChartOpenCircle1.Visible = False
-		    Self.ChartOpenCircle1.Enabled = False
-		  Catch
-		  End Try
 		  // PARSE CODE
 		  Dim Parse_AccessCode_RegEx as RegEx
 		  Dim Parse_AccessCode_RegExMatch as RegExMatch
