@@ -9,16 +9,16 @@ Begin Window DemoWindow
    FullScreen      =   False
    FullScreenButton=   False
    HasBackColor    =   False
-   Height          =   441
+   Height          =   550
    ImplicitInstance=   True
    LiveResize      =   True
    MacProcID       =   0
-   MaxHeight       =   441
+   MaxHeight       =   550
    MaximizeButton  =   False
-   MaxWidth        =   786
+   MaxWidth        =   800
    MenuBar         =   0
    MenuBarVisible  =   True
-   MinHeight       =   441
+   MinHeight       =   550
    MinimizeButton  =   False
    MinWidth        =   786
    Placement       =   0
@@ -31,7 +31,7 @@ Begin Window DemoWindow
       Bold            =   False
       Caption         =   "Dropbox oAUTH 2.0 AUTHORIZATION"
       Enabled         =   True
-      Height          =   257
+      Height          =   323
       HelpTag         =   ""
       Index           =   -2147483648
       InitialParent   =   ""
@@ -310,7 +310,7 @@ Begin Window DemoWindow
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
-         Top             =   235
+         Top             =   301
          Underline       =   False
          Visible         =   True
          Width           =   96
@@ -392,6 +392,71 @@ Begin Window DemoWindow
          Visible         =   True
          Width           =   130
       End
+      Begin PopupMenu SelectLocale_PopupMenu
+         AutoDeactivate  =   True
+         Bold            =   False
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox1"
+         InitialValue    =   ""
+         Italic          =   False
+         Left            =   60
+         ListIndex       =   0
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Scope           =   0
+         TabIndex        =   16
+         TabPanelIndex   =   0
+         TabStop         =   True
+         TextFont        =   "Helvetica Neue"
+         TextSize        =   0.0
+         TextUnit        =   0
+         Top             =   261
+         Underline       =   False
+         Visible         =   True
+         Width           =   239
+      End
+      Begin Label SelectLocale_Label
+         AutoDeactivate  =   True
+         Bold            =   False
+         DataField       =   ""
+         DataSource      =   ""
+         Enabled         =   True
+         Height          =   20
+         HelpTag         =   ""
+         Index           =   -2147483648
+         InitialParent   =   "GroupBox1"
+         Italic          =   False
+         Left            =   61
+         LockBottom      =   False
+         LockedInPosition=   False
+         LockLeft        =   True
+         LockRight       =   False
+         LockTop         =   True
+         Multiline       =   False
+         Scope           =   0
+         Selectable      =   False
+         TabIndex        =   17
+         TabPanelIndex   =   0
+         Text            =   "Select Your Locale"
+         TextAlign       =   0
+         TextColor       =   &c00000000
+         TextFont        =   "System"
+         TextSize        =   12.0
+         TextUnit        =   0
+         Top             =   238
+         Transparent     =   False
+         Underline       =   False
+         Visible         =   True
+         Width           =   130
+      End
    End
    Begin GroupBox GroupBox2
       AutoDeactivate  =   True
@@ -416,7 +481,7 @@ Begin Window DemoWindow
       TextFont        =   "System"
       TextSize        =   12.0
       TextUnit        =   0
-      Top             =   279
+      Top             =   345
       Underline       =   False
       Visible         =   True
       Width           =   756
@@ -446,7 +511,7 @@ Begin Window DemoWindow
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
-         Top             =   307
+         Top             =   373
          Underline       =   False
          Visible         =   True
          Width           =   124
@@ -477,7 +542,7 @@ Begin Window DemoWindow
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
-         Top             =   347
+         Top             =   413
          Underline       =   False
          Visible         =   True
          Width           =   124
@@ -499,7 +564,7 @@ Begin Window DemoWindow
          TabIndex        =   6
          TabPanelIndex   =   0
          TabStop         =   True
-         Top             =   294
+         Top             =   360
          Visible         =   True
          Width           =   39
       End
@@ -529,7 +594,7 @@ Begin Window DemoWindow
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
-         Top             =   386
+         Top             =   452
          Underline       =   False
          Visible         =   True
          Width           =   124
@@ -571,7 +636,7 @@ Begin Window DemoWindow
          TextFont        =   "System"
          TextSize        =   12.0
          TextUnit        =   0
-         Top             =   386
+         Top             =   452
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
@@ -614,7 +679,7 @@ Begin Window DemoWindow
          TextFont        =   "System"
          TextSize        =   12.0
          TextUnit        =   0
-         Top             =   307
+         Top             =   373
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
@@ -646,7 +711,7 @@ Begin Window DemoWindow
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
-         Top             =   307
+         Top             =   373
          Underline       =   False
          Visible         =   True
          Width           =   124
@@ -677,7 +742,7 @@ Begin Window DemoWindow
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
-         Top             =   347
+         Top             =   413
          Underline       =   False
          Visible         =   True
          Width           =   124
@@ -719,7 +784,7 @@ Begin Window DemoWindow
          TextFont        =   "System"
          TextSize        =   12.0
          TextUnit        =   0
-         Top             =   347
+         Top             =   413
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
@@ -762,7 +827,7 @@ Begin Window DemoWindow
          TextFont        =   "System"
          TextSize        =   12.0
          TextUnit        =   0
-         Top             =   347
+         Top             =   413
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
@@ -794,7 +859,7 @@ Begin Window DemoWindow
          TextFont        =   "System"
          TextSize        =   0.0
          TextUnit        =   0
-         Top             =   386
+         Top             =   452
          Underline       =   False
          Visible         =   True
          Width           =   124
@@ -836,7 +901,7 @@ Begin Window DemoWindow
          TextFont        =   "System"
          TextSize        =   12.0
          TextUnit        =   0
-         Top             =   386
+         Top             =   452
          Underline       =   False
          UseFocusRing    =   True
          Visible         =   True
@@ -945,6 +1010,11 @@ End
 	#tag EndMethod
 
 
+	#tag Property, Flags = &h21
+		Private myLocale As String
+	#tag EndProperty
+
+
 #tag EndWindowCode
 
 #tag Events DB_ClientID_TextField
@@ -1031,6 +1101,37 @@ End
 		End Sub
 	#tag EndEvent
 #tag EndEvents
+#tag Events SelectLocale_PopupMenu
+	#tag Event
+		Sub Open()
+		  // BUILD IETF LANGUAGE TAG LOCALE SELECTIONS
+		  // Source: http://www.iana.org/assignments/language-subtag-registry/language-subtag-registry
+		  
+		  Me.AddRow("af")
+		  Me.AddRow("cs")
+		  Me.AddRow("da")
+		  Me.AddRow("de")
+		  Me.AddRow("en")
+		  Me.AddRow("fr")
+		  Me.AddRow("it")
+		  Me.AddRow("ja")
+		  Me.AddRow("nl")
+		  Me.AddRow("pl")
+		  Me.AddRow("pt")
+		  Me.AddRow("ru")
+		  Me.AddRow("sk")
+		  Me.AddRow("sv")
+		  Me.AddRow("zh")
+		  
+		  me.ListIndex = 4
+		End Sub
+	#tag EndEvent
+	#tag Event
+		Sub Change()
+		  myLocale = SelectLocale_PopupMenu.Text
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag Events APIGetAccountInfoButton
 	#tag Event
 		Sub Action()
@@ -1039,8 +1140,8 @@ End
 		  End If
 		  
 		  // MAKE API CALL USING DEFAULT LOCALE OF ENGLISH
-		  // DROPBOX OPTIONAL AVAILABLE PARAMETERS =  (locale)
-		  Dim DropboxAccountInfo as Dictionary = Common_Module.DropboxAPICallSocket.API_Call_AccountInfo("en")
+		  // DROPBOX OPTIONAL AVAILABLE PARAMETERS =  (locale) <-- USING AN IETF LANGUAGE TAG
+		  Dim DropboxAccountInfo as Dictionary = Common_Module.DropboxAPICallSocket.API_Call_AccountInfo(myLocale)
 		  
 		  Dim thisValue, thisTitle as String
 		  // PARSE RETURNED USER ACCOUNT DICTIONARY TO TEXTAREA FOR DEMO
@@ -1079,7 +1180,7 @@ End
 		    // MAKE API CALL
 		    // DROPBOX OPTIONAL AVAILABLE PARAMETERS =  ( locale, overwrite, parent_rev, autorename)
 		    Dim FolderToPutFile as String = Trim(FolderToPutFile_TextField.Text)
-		    CopyFileResults_Dictionary = Common_Module.DropboxAPICallSocket.API_Call_PutFile(f, "en", "true","","true", FolderToPutFile)
+		    CopyFileResults_Dictionary = Common_Module.DropboxAPICallSocket.API_Call_PutFile(f, myLocale, "true","","true", FolderToPutFile)
 		  Else
 		    // USER CANCELLED SO ABORT
 		    Return
@@ -1103,7 +1204,7 @@ End
 		  if DeltaFolderName <> "" Then
 		    // MAKE API CALL
 		    // DROPBOX OPTIONAL AVAILABLE PARAMETERS = (cursor, locale, path_prefix, include_media_info)
-		    DeltaChangesResults_Dictionary = Common_Module.DropboxAPICallSocket.API_Call_Delta("","en",DeltaFolderName, "False")
+		    DeltaChangesResults_Dictionary = Common_Module.DropboxAPICallSocket.API_Call_Delta("",myLocale,DeltaFolderName, "False")
 		    
 		    // BLANK OUT THE TEXTFIELD ON DEMO WINDOW
 		    DeltaFolderTextField.Text = ""
@@ -1152,7 +1253,7 @@ End
 		  if UserFolderName <> "" Then
 		    // MAKE API CALL
 		    // DROPBOX OPTIONAL AVAILABLE PARAMETERS =  (locale)
-		    CreateFolderResults_Dictionary = Common_Module.DropboxAPICallSocket.API_Call_CreateFolder(UserFolderName, "en")
+		    CreateFolderResults_Dictionary = Common_Module.DropboxAPICallSocket.API_Call_CreateFolder(UserFolderName, myLocale)
 		    
 		    // BLANK OUT THE TEXTFIELD ON DEMO WINDOW
 		    FolderNameTextField.Text = ""
@@ -1177,7 +1278,7 @@ End
 		  if UserFolderNameToDelete <> "" Then
 		    // MAKE API CALL
 		    // DROPBOX OPTIONAL AVAILABLE PARAMETERS =  (locale)
-		    DeleteFolderResults_Dictionary = Common_Module.DropboxAPICallSocket.API_Call_DeleteFolder(UserFolderNameToDelete, "en")
+		    DeleteFolderResults_Dictionary = Common_Module.DropboxAPICallSocket.API_Call_DeleteFolder(UserFolderNameToDelete, myLocale)
 		    
 		    // BLANK OUT THE TEXTFIELD ON DEMO WINDOW
 		    FolderToDelete_TextField.Text = ""
@@ -1203,7 +1304,7 @@ End
 		    // MAKE API CALL
 		    // DROPBOX OPTIONAL AVAILABLE PARAMETERS =  (locale, rev_limit)
 		    Dim rev_limit as String = "10"
-		    RevisionPathToFileResults_Variant() = Common_Module.DropboxAPICallSocket.API_Call_RevisionInfo(UserRevisionPathToFile, "en", rev_limit)
+		    RevisionPathToFileResults_Variant() = Common_Module.DropboxAPICallSocket.API_Call_RevisionInfo(UserRevisionPathToFile, myLocale, rev_limit)
 		    
 		    // PARSE RETURNED REVISION CHANGES VARIANT ARRAY
 		    Self.TextArea1.AppendText "Number of Revisions Retreived: " + rev_limit + EndOfLine + EndOfLine
