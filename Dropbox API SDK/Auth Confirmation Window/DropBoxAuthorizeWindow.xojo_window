@@ -161,13 +161,16 @@ End
 		  Parse_AccessCode_RegEx.SearchPattern = "(?<=\?code=).+"
 		  
 		  Parse_AccessCode_RegExMatch = Parse_AccessCode_RegEx.Search(PageContent)
-		  if Parse_AccessCode_RegExMatch <> nil then
+		  
+		  if Parse_AccessCode_RegExMatch <> nil and not parsenotok then
 		    Parse_AccessCode_HitText = Trim(Parse_AccessCode_RegExMatch.SubExpressionString(0))
 		    Common_Module.DropboxOAUTHSocket.Dropbox_Access_Code = Parse_AccessCode_HitText
+		    parsenotok = True
+		    HTMLViewer1.Enabled = True
+		    HTMLViewer1.Visible = True
+		  else
+		    HTMLViewer1.ExecuteJavaScript("location.reload();")
 		  end if
-		  
-		  HTMLViewer1.Enabled = True
-		  HTMLViewer1.Visible = True
 		  
 		End Sub
 	#tag EndMethod
@@ -175,6 +178,10 @@ End
 
 	#tag Property, Flags = &h0
 		CancelLoadURL As string
+	#tag EndProperty
+
+	#tag Property, Flags = &h21
+		Private parsenotok As Boolean
 	#tag EndProperty
 
 	#tag Property, Flags = &h21
